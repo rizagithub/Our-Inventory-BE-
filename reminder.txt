@@ -1,0 +1,13 @@
+untuk membuat tabel di pg adminnya : npx sequelize db:migrate
+untuk undo tabel yang sudh dibuat di pg admin :npx sequelize db:migrate:undo:all 
+
+- `npm init`
+- npm install express morgan nodemon pg pg-hstore sequelize. `morgan` ...
+- npm i sequelize-cli kalau ga bisa pakai ini `npx sequelize init`
+- terus di config ditambah `database.js`
+- `npx sequelize model:generate --name product --attributes name:string,price:float,stock:integer` adalah .... 
+- bikin `.sequelizerc` untuk membantu kebutuhan kita bisa bisa config ke database
+- npm install imagekit-javascript --save ( mempelajari https://github.com/imagekit-developer/imagekit-javascript)
+
+npx sequelize model:generate --name users --attributes username:string,password:string,role:enum,shopId:integer
+npx sequelize model:generate --name shops --attributes name:string,city:string,shopId:integer,userId:integer

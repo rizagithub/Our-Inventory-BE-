@@ -1,0 +1,5 @@
+1. Refactor/rapihin routing file nya
+2. bikin validasi di tiap API
+3. bikin username unique, gk boleh ada username yg sama
+4. itu yg dashboard di index.js yg di main root, tolong refactor, rapihin ke controller, dan routing
+5. apply middleware Auth ke semua API Products dan Shops

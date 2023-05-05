@@ -1,0 +1,6 @@
+const path = require("path");
+
+module.exports = {
+    // ini agar yang kebaca di config itu database.js
+    config: path.resolve('config', 'database.js')
+}
