@@ -3,21 +3,27 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.createTable('users', {
+    await queryInterface.createTable('products', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      username: {
+      name: {
         type: Sequelize.STRING
       },
-      password: {
-        type: Sequelize.STRING
+      price: {
+        type: Sequelize.FLOAT
       },
-      role: {
-        type: Sequelize.ENUM(['superadmin', 'admin', 'user'])
+      stock: {
+        type: Sequelize.INTEGER
+      },
+      imageUrl: {
+        type: Sequelize.TEXT
+      },
+      shopId: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -26,17 +32,9 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      }
+      },
+      
     });
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-    */
   },
 
   async down (queryInterface, Sequelize) {
