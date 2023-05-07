@@ -262,21 +262,109 @@
                     "description": "Success get all product data"
                 }
             }
-        },
-        "post":{
-          "tags": [
-            "Products"
-        ],
-        "summary": "Returns a list of product.",
-            "description": "This is API for create product",
-            "responses": {
-                "200": {
-                    "description": "Congrats, succes create new product"
+        }},
+     "/product/create": {
+        "post": {
+            "tags": [
+                "Products"
+                ],
+                "summary": "Success creaete products",
+                "description": "This is API for create new products",
+                "security": [
+                    {
+                        "bearerToken": []
+                    }
+                ],
+                "requestBody": {
+                    "description": "Success create new products",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "avanza"
+                                    },
+                                    "price": {
+                                        "type": "integer",
+                                        "example": 1000
+                                    },
+                                    "stock": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "shopId": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Success create new Products",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "Success"
+                                        },
+                                        "data": {
+                                            "type": "object",
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "avanza"
+                                                },
+                                                "price": {
+                                                    "type": "integer",
+                                                    "example": 1000
+                                                },
+                                                "stock": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "shopId": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Failed because name product is empty",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "failed"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Failed because product name empty"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
-      
-      }
     
   },
   "components": {
