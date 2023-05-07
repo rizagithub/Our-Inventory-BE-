@@ -3,3 +3,5 @@
 3. bikin username unique, gk boleh ada username yg sama
 4. itu yg dashboard di index.js yg di main root, tolong refactor, rapihin ke controller, dan routing
 5. apply middleware Auth ke semua API Products dan Shops
+6. beresin semua api documentassi nya, jangan lupa response example sama request body example nya jg.
+7. tambahin seeder user role superadmin dan admin, explore sendiri untuk ini

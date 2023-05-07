@@ -1,29 +1,322 @@
 {
-    "swagger": "2.0",
-    "info": {
-      "title": "Challenge FSW 3 - Chapter 5",
-      "description": "API description in Markdown.",
+  "openapi": "3.0.0",
+  "info": {
+      "title": "Challenge FSW 3 chapter 5",
+      "description": "Riza-FSW 3 Class-Binar Academy",
       "version": "1.0.0"
-    },
-    "host": "localhost:3000",
-    "basePath": "/api/v1",
-    "schemes": [
-      "http"
-    ],
-    "paths": {
-      "/users": {
-        "get": {
-          "summary": "Returns a list of users.",
-          "description": "Optional extended description in Markdown.",
-          "produces": [
-            "application/json"
-          ],
-          "responses": {
-            "200": {
-              "description": "OK"
-            }
-          }
-        }
+  },
+  "tags": [
+      {
+          "name": "Challenge-5",
+          "description": "This is API for managing CRUD SHOPS, USERS and PRODUCT"
       }
-    }
+  ],
+  "servers": [
+      {
+          "url": "http://localhost:3000/api/v1"
+      }
+  ],
+  "paths": {
+      "/shops": {
+          "get": {
+              "tags": [
+                  "Shops"
+              ],
+              "summary": "Returns a list of shops.",
+              "description": "This is API for get all shop data",
+              "responses": {
+                  "200": {
+                      "description": "Success get shops data"
+                  }
+              }
+          },
+          "post": {
+              "tags": [
+                  "Shops"
+              ],
+              "summary": "Success creaete shop",
+              "description": "This is API for create new shop",
+              "security": [
+                  {
+                      "bearerToken": []
+                  }
+              ],
+              "requestBody": {
+                  "description": "Success create new shop",
+                  "required": true,
+                  "content": {
+                      "application/json": {
+                          "schema": {
+                              "type": "object",
+                              "properties": {
+                                  "name": {
+                                      "type": "string",
+                                      "example": "toko imam"
+                                  },
+                                  "city": {
+                                      "type": "string",
+                                      "example": "bandung"
+                                  },
+                                  "userId": {
+                                      "type": "integer",
+                                      "example": 1
+                                  }
+                              }
+                          }
+                      }
+                  }
+              },
+              "responses": {
+                  "201": {
+                      "description": "Success create new Shop",
+                      "content": {
+                          "application/json": {
+                              "schema": {
+                                  "type": "object",
+                                  "properties": {
+                                      "status": {
+                                          "type": "string",
+                                          "example": "Success"
+                                      },
+                                      "data": {
+                                          "type": "object",
+                                          "properties": {
+                                              "name": {
+                                                  "type": "string",
+                                                  "example": "toko imam"
+                                              },
+                                              "city": {
+                                                  "type": "string",
+                                                  "example": "bandung"
+                                              },
+                                              "userId": {
+                                                  "type": "integer",
+                                                  "example": 1
+                                              }
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  },
+                  "400": {
+                      "description": "Failed because name shop is empty",
+                      "content": {
+                          "application/json": {
+                              "schema": {
+                                  "type": "object",
+                                  "properties": {
+                                      "status": {
+                                          "type": "string",
+                                          "example": "failed"
+                                      },
+                                      "message": {
+                                          "type": "string",
+                                          "example": "Failed because shop name empty"
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      },
+
+      "/users" :{
+        "get": {
+          "tags": [
+              "Users"
+          ],
+          "summary": "Returns a list of users.",
+          "description": "This is API for get all users data",
+          "responses": {
+              "200": {
+                  "description": "Success get all users data"
+              }
+          }
+      }},
+      "/users/register":{
+        "post": {
+          "tags": [
+              "Users"
+          ],
+          "summary": "Success creaete new user",
+          "description": "This is API for create new user",
+          "security": [
+        
+          ],
+          "requestBody": {
+              "description": "Success create new user",
+              "required": true,
+              "content": {
+                  "application/json": {
+                      "schema": {
+                          "type": "object",
+                          "properties": {
+                              "username": {
+                                  "type": "string",
+                                  "example": "riza"
+                              },
+                              "password": {
+                                  "type": "string",
+                                  "example": "test123"
+                              }
+                          }
+                      }
+                  }
+              }
+          },
+          "responses": {
+              "201": {
+                  "description": "Success create new User",
+                  "content": {
+                      "application/json": {
+                          "schema": {
+                              "type": "object",
+                              "properties": {
+                                  "status": {
+                                      "type": "string",
+                                      "example": "Success"
+                                  },
+                                  "data": {
+                                      "type": "object",
+                                      "properties": {
+                                          "username": {
+                                              "type": "string",
+                                              "example": "riza"
+                                          },
+                                          "password": {
+                                              "type": "string",
+                                              "example": "test123"
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              },
+              "400": {
+                  "description": "Failed because name character less than 5 alphabet",
+                  "content": {
+                      "application/json": {
+                          "schema": {
+                              "type": "object",
+                              "properties": {
+                                  "status": {
+                                      "type": "string",
+                                      "example": "failed"
+                                  },
+                                  "message": {
+                                      "type": "string",
+                                      "example": "Failed because character less than 5"
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+
+      },
+      "/users/:id":{
+        "get": {
+          "tags": [
+              "Users"
+          ],
+          "summary": "Returns a list data user by id.",
+          "description": "This is API for get user data by id",
+          "requestBody": {
+            "description": "Input user id",
+            "required": true,
+            "content": {
+                "application/json": {
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                        }
+                    }
+                }
+            }
+        },
+          "responses": {
+              "200": {
+                  "description": "Success get user data"
+              }
+          }
+      }
+      },
+
+      "/product": {
+        "get": {
+            "tags": [
+                "Products"
+            ],
+            "summary": "Returns a list of product.",
+            "description": "This is API for get all product data",
+            "responses": {
+                "200": {
+                    "description": "Success get all product data"
+                }
+            }
+        },
+        "post":{
+          "tags": [
+            "Products"
+        ],
+        "summary": "Returns a list of product.",
+            "description": "This is API for create product",
+            "responses": {
+                "200": {
+                    "description": "Congrats, succes create new product"
+                }
+            }
+        }
+      
+      }
+    
+  },
+  "components": {
+      "schemas": {
+          "shops": {
+              "type": "object",
+              "properties": {
+                  "name": {
+                      "type": "string",
+                      "example": "toko imam"
+                  },
+                  "city": {
+                      "type": "string",
+                      "example": "bandung"
+                  },
+                  "userId": {
+                      "type": "integer",
+                      "example": 1
+                  }
+              }
+          },
+          "users":{
+            "type": "object",
+              "properties": {
+                  "username": {
+                      "type": "string",
+                      "example": "rizaaa"
+                  },
+                  "password": {
+                      "type": "string",
+                      "example": "test123"
+                  }
+              }
+          }
+      },
+      "securitySchemes": {
+          "bearerToken": {
+              "type": "http",
+              "scheme": "bearer"
+          }
+      }
   }
+}
