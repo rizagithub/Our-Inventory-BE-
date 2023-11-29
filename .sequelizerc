@@ -1,4 +1,7 @@
-const path = require("path");
+const dotenv = require('dotenv');
+const path = require('path');
+
+dotenv.config()
 
 module.exports = {
     // ini agar yang kebaca di config itu database.js

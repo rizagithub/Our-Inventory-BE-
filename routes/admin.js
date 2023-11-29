@@ -1,9 +1,16 @@
-const router = require('express').Router();
-const adminController = require('../controller/adminController');
+const router = require("express").Router();
 
-router.get('/', adminController.getProduct)
-router.get('/create', adminController.createProduct)
-router.get('/edit/:id', adminController.editProduct)
-router.get('/delete/:id', adminController.deleteProduct)
+// controller
+const adminController = require("../controller/adminController");
 
-module.exports = router
+// middleware
+
+// API
+router.post("/register", adminController.register);
+router.post("/login", adminController.login);
+router.put("/:id", adminController.updateAdmin);
+router.get("/", adminController.findAllAdmin);
+router.get("/:id", adminController.findAdminById);
+router.delete("/:id", adminController.deleteAdmin);
+
+module.exports = router;

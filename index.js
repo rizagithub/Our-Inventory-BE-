@@ -1,41 +1,20 @@
-// import atau panggil package yang kita mau pake di aplikasi kita
-const express = require('express');
-// untuk baca public directory
-const path =require("path");
+require("dotenv").config();
 
-// bantu upload file
-// const imagekit = require('./lib/imagekit')
-// const upload = require('./middleware/uploader')
-
-// framework utk http server
+const express = require("express");
+const port = process.env.PORT;
 const app = express();
-const PORT = 3000;
+const router = require("./routes");
+const cors = require("cors");
 
-// middleware, untuk baca json
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// parse requests of content-type - application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: false }));
 
-const routes = require('./routes');
+app.use(cors());
 
-// setting view engine
-app.set("views", __dirname +"/views");
-app.set("view engine", "ejs");
+app.use(router);
 
-// publicc
-app.use(express.static(path.join(__dirname, "public")))
-app.use(express.static(path.join(__dirname, "controller")))
-
-app.get('/', (req, res) => {
-    res.render("index", {
-        name : "riza",
-        status : 'tanda tanya',
-        title : 'fsw - 3'
-    })
-})
-
-app.use(routes);
-
-// memulai server nya
-app.listen(PORT, () => {
-    console.log(`App running on Localhost: ${PORT}`)
-})
+app.listen(port, () => {
+  console.log(`Server running on ${Date(Date.now)}`);
+  console.log(`Server listening on PORT: ${port}`);
+});

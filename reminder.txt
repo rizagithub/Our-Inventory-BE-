@@ -11,3 +11,12 @@ untuk undo tabel yang sudh dibuat di pg admin :npx sequelize db:migrate:undo:all
 
 npx sequelize model:generate --name users --attributes username:string,password:string,role:enum,shopId:integer
 npx sequelize model:generate --name shops --attributes name:string,city:string,shopId:integer,userId:integer
+
+- start kerjain project existing dari clone -> npm I -> config db sampe sukses hit API
+1. dotenv
+2. gitignore
+3. advance upload files
+4. try and catch => catchAsync
+5. error handler
+6. http status package
+7. upload file di request body openAPI
